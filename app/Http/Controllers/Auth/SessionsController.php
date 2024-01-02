@@ -10,27 +10,43 @@ use Session;
 
 class SessionsController extends Controller
 {
-    public function login(Request $request)
+    public function adminLogin(Request $request)
     {
-        if (Auth::check()) {
-            return redirect()->route('home');
-        } else {
-            return view('login');
-        }
+        
+        return view('admin/sessions/create');
+    }
+
+    public function doctorLogin(Request $request)
+    {
+        return view('doctor/sessions/create');
     }
 
     public function create(Request $request)
     {
         $validated = $request->validate([
-            'name'     => 'required|max:35',
-            'password' => 'required|max:25',
+            'credential' => 'required|max:50',
+            'password'    => 'required|max:25',
         ]);
 
-        if (Auth::Attempt($validated)) {
-            $role = $request->input('role'); // Mengambil nilai role dari form
+        if ($request->role == 'admin') {
+            $model      = 'admin'; 
+            $credential = [
+                'username' => $request->credential,
+                'password' => $request->password,
+            ];
+        }
 
-            // Menyimpan nilai role ke dalam session
-            $request->session()->put('role', $role);
+        if ($request->role == 'doctor') {
+            $model      = 'doctor';
+            $credential = [
+                'nip'      => $request->credential,
+                'password' => $request->password,
+            ];
+        }
+
+        if (auth()->guard($model)->attempt($credential)) {
+            $request->session()->put('role', $request->role);
+
             return redirect()->route('home');
         } else {
             Session::flash('error', 'Email atau Password Salah');
@@ -40,7 +56,8 @@ class SessionsController extends Controller
     }
     public function logout(Request $request)
     {
-        Auth::logout(); // Logout pengguna
+        if (Session::get('role') == 'doctor') auth()->guard('doctor')->logout(); 
+        if (Session::get('role') == 'admin') auth()->guard('admin')->logout();
 
         $request->session()->invalidate(); // Invalidasi sesi
         $request->session()->regenerateToken(); // Regenerate CSRF Token

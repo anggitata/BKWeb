@@ -36,10 +36,14 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'doctor' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'doctors',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ]
     ],
 
     /*
@@ -60,15 +64,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'doctors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Doctor::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ]
     ],
 
     /*
