@@ -21,9 +21,9 @@
 <body class="hold-transition login-page"
 style="background-color: #ffffff;">
     <div class="container-fluid flex flex-col justify-center items-center text-white p-5"
-        style="height: 400px; background-color: #248f24">
-        <h1 class="font-weight-bold mb-3">Sistem Janji Temu Pasien & Dokter</h1>
-        <h5>Bimbingan Karir 2023 Bidang Web Developer</h5>
+    style="height: 400px; background-image: url('assets/pics/lobby.jpg'); background-size: cover; background-position: center;">
+        <h1 class="font-weight-bold mb-3" style="color: black;">SELAMAT DATANG</h1>
+        <h3 class="font-weight-bold mb-3" style="color: black;">DI KLINIK ONLINE</h3>
         <!-- <br>
         <h6>APD</h6> -->
     </div>
@@ -32,24 +32,20 @@ style="background-color: #ffffff;">
             <div class="col-md-6">
                 <div>
                     <div class="card-body">
-                        <i class="fas fa-user fa-fw mb-3 text-primary text-primary" style="font-size: 34px;"></i>
-                        <h4><b>Login Sebagai Pasien</b></h4>
-                        <p class="card-text">Apabila anda adalah seorang Pasien, Silahkan Login terlebih dahulu untuk
-                            melakukan pendaftaran sebagai pasien</p>
-                        <a href="loginUser.php" class="text-primary"><b>Klik Link Berikut</b></a>
+                        <i class="fas fa-user-nurse fa-fw mb-3 text-success" style="font-size: 34px;"></i>
+                        <h4><b>Login Sebagai Dokter</b></h4>
+                        <div class="d-grid">
+                            <a href="login.php" class="text-success"><b>Klik Link Berikut</b></a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div>
                     <div class="card-body">
-                        <i class="fas fa-user-nurse fa-fw mb-3 text-success" style="font-size: 34px;"></i>
-                        <h4><b>Login Sebagai Dokter</b></h4>
-                        <p class="card-text">Apabila anda adalah seorang Dokter, silahkan Login terlebih dahulu untuk
-                            memulai melayani pasien</p>
-                        <div class="d-grid">
-                            <a href="login.php" class="text-success"><b>Klik Link Berikut</b></a>
-                        </div>
+                        <i class="fas fa-user fa-fw mb-3 text-primary text-primary" style="font-size: 34px;"></i>
+                        <h4><b>Login Sebagai Pasien</b></h4>
+                        <a href="loginUser.php" class="text-primary"><b>Klik Link Berikut</b></a>
                     </div>
                 </div>
             </div>

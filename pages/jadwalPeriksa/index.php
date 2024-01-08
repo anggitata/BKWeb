@@ -70,18 +70,6 @@
                                                     <input type="time" class="form-control" id="jamSelesai"
                                                         name="jamSelesai" required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="statusJadwal">Status</label>
-                                                    <select class="form-control" id="statusJadwal" name="status">
-                                                        <?php
-                                                            $statusArray = ['Aktif', 'Non-Aktif'];
-                                                           foreach($statusArray as $statusJadwal){
-                                                        ?>
-                                                        <option value="<?php echo $statusJadwal ?>">
-                                                            <?php echo $statusJadwal ?></option>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
                                                 <button type="submit" class="btn btn-success">Tambah</button>
                                             </form>
                                         </div>
@@ -117,7 +105,6 @@
                                                             <td>Hari</td>
                                                             <td>Jam Mulai</td>
                                                             <td>Jam Selesai</td>
-                                                            <td>Status</td>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -125,7 +112,7 @@
                                                             $nomor = 1;
                                                             require 'config/koneksi.php';
                                                             $ambilDataJadwal = "SELECT jadwal_periksa.id, jadwal_periksa.id_dokter, 
-                                                            jadwal_periksa.hari, jadwal_periksa.jam_mulai, jadwal_periksa.jam_selesai, jadwal_periksa.status_jadwal,
+                                                            jadwal_periksa.hari, jadwal_periksa.jam_mulai, jadwal_periksa.jam_selesai,
                                                             dokter.id AS idDokter, dokter.nama, dokter.alamat, dokter.no_hp, dokter.id_poli, 
                                                             poli.id AS idPoli, poli.nama_poli, poli.keterangan FROM jadwal_periksa INNER JOIN 
                                                             dokter ON jadwal_periksa.id_dokter = dokter.id INNER JOIN poli ON dokter.id_poli 
@@ -141,7 +128,6 @@
                                                             <td><?php echo $a['hari'] ?></td>
                                                             <td><?php echo $a['jam_mulai'] ?></td>
                                                             <td><?php echo $a['jam_selesai'] ?></td>
-                                                            <td><?php echo $a['status_jadwal'] ?></td>
                                                         </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -165,7 +151,6 @@
                                     <th>Hari</th>
                                     <th>Jam Mulai</th>
                                     <th>Jam Selesai</th>
-                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -176,7 +161,7 @@
                                 $no = 1;
                                 require 'config/koneksi.php';
                                 $query = "SELECT jadwal_periksa.id, jadwal_periksa.id_dokter, jadwal_periksa.hari, 
-                                jadwal_periksa.jam_mulai, jadwal_periksa.jam_selesai,jadwal_periksa.status_jadwal, dokter.id AS idDokter, dokter.nama, 
+                                jadwal_periksa.jam_mulai, jadwal_periksa.jam_selesai, dokter.id AS idDokter, dokter.nama, 
                                 dokter.alamat, dokter.no_hp, dokter.id_poli, poli.id AS idPoli, poli.nama_poli, poli.keterangan 
                                 FROM jadwal_periksa INNER JOIN dokter ON jadwal_periksa.id_dokter = dokter.id INNER JOIN poli ON 
                                 dokter.id_poli = poli.id WHERE id_poli = '$id_poli' AND dokter.id = '$id_dokter'";
@@ -191,7 +176,6 @@
                                         <td><?php echo $data['hari'] ?></td>
                                         <td><?php echo $data['jam_mulai'] ?></td>
                                         <td><?php echo $data['jam_selesai'] ?></td>
-                                        <td><?php echo $data['status_jadwal'] ?></td>
                                         <td>
                                             <?php
                                                 require 'config/koneksi.php';
@@ -256,18 +240,6 @@
                                                                 <input type="time" class="form-control" id="jamSelesai"
                                                                     name="jamSelesai" required
                                                                     value="<?= $data['jam_selesai'] ?>">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="statusJadwal">Status</label>
-                                                                <select class="form-control" id="statusJadwal" name="status">
-                                                                    <?php
-                                                                $statusArray = ['Aktif','Non-Aktif'];
-                                                            foreach($statusArray as $statusJadwal){
-                                                            ?>
-                                                                    <option value="<?php echo $statusJadwal ?>">
-                                                                        <?php echo $statusJadwal ?></option>
-                                                                    <?php } ?>
-                                                                </select>
                                                             </div>
                                                             <button type="submit" class="btn btn-success">Simpan</button>
                                                         </form>
